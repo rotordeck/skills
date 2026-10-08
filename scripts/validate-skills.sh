@@ -29,6 +29,11 @@ for dir in skills/*/; do
     [[ -e "$dir/$ref" ]] || fail "$folder" "referenced file '$ref' not found"
   done < <(grep -oE '`(workflows|references|scripts|templates)/[^`[:space:]]+`' "$file" | tr -d '`' | sort -u)
 
+  # Other skills it names ("the `bf-cli` skill") must exist in this repo.
+  while read -r other; do
+    [[ -f "skills/$other/SKILL.md" ]] || fail "$folder" "refers to the '$other' skill, which is not in skills/"
+  done < <(grep -oE 'the `[a-z0-9-]+` skill' "$file" | sed -E 's/the `(.*)` skill/\1/' | sort -u)
+
   [[ $status -eq 0 ]] && echo "ok   $folder"
 done
 

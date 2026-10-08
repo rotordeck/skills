@@ -7,7 +7,8 @@
 ## Workflow
 1. Run `bf blackbox info --json`: the device (SPIFLASH/SDCARD/NONE) and flash usage.
 2. **Configure:**
-   - `bf blackbox set blackbox_device=SPIFLASH blackbox_sample_rate=1/2` and `bf system set debug_mode=GYRO_SCALED`
+   - `bf blackbox set blackbox_device=SPIFLASH blackbox_sample_rate=1/2`
+   - Leave `debug_mode=NONE` for general tuning logs: unfiltered gyro is logged anyway (the old `GYRO_SCALED` mode was removed). For filter work use `bf system set debug_mode=RPM_FILTER` or `FFT_FREQ`.
    - Find setting names with `bf blackbox get --json`. Find debug modes with `bf setting info debug_mode`.
    - Put logging on a switch (`bf modes set BLACKBOX ...`), or log always (`blackbox_mode`).
 3. **Download** after flying: `bf blackbox download -o flight.bbl`. Typical speed is ~50–150 KiB/s.
