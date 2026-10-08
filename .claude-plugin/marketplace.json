@@ -1,0 +1,22 @@
+{
+  "name": "rotordeck-skills",
+  "owner": {
+    "name": "Rotordeck",
+    "url": "https://github.com/rotordeck"
+  },
+  "metadata": {
+    "description": "Agent Skills for FPV drones: Betaflight configuration and tooling",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "betaflight",
+      "description": "Configure Betaflight flight controllers with the bf CLI: receiver, modes, motors, PIDs, rates, filters, failsafe, OSD, VTX, presets, backups, firmware and arming troubleshooting.",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/betaflight", "./skills/bf-cli"],
+      "license": "AGPL-3.0-or-later",
+      "keywords": ["betaflight", "fpv", "drone", "cli"]
+    }
+  ]
+}

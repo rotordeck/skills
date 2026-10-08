@@ -1,0 +1,16 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate SKILL.md files
+        run: bash scripts/validate-skills.sh
+      - name: Validate marketplace manifest
+        run: jq empty .claude-plugin/marketplace.json
